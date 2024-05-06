@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import restaurantList from "../utils/RestaurantList";
-import { useState } from "react";
+import Shimmer from "./Shimmer";
+import { useState,useEffect } from "react";
 
 
 const Body = () =>{
@@ -41,6 +42,20 @@ let ListOfRestaurantsjs = [
         }, 
       },
 ];
+
+useEffect(()=>{
+    fetchData();
+},[]);
+
+const fetchData = async()=>{
+    const data = await fetch( "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");   
+    const json = await data.json();
+    setListOfRestraunt (json?.data?.cards[2]?.data?.data?.cards);
+};
+
+if(ListOfRestaurants.length === 0){
+  return <Shimmer />
+}
 
     return(
         <div className="body">
