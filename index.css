@@ -87,9 +87,18 @@ background-color: #f0ecec;
     flex-wrap: wrap;
 }
 
-.chimmer-card{
+.shimmer-card{
     width: 200px;
     height: 400px;
     background-color: #f0f0f0;
     margin: 20px;
+}
+
+.login{
+    padding:0 20px;
+    cursor: pointer;
+}
+
+.filter{
+    display: flex;
 }
