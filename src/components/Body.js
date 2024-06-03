@@ -72,20 +72,21 @@ if(onlineStatus===false)
 
     return ListOfRestaurants.length === 0? <Shimmer /> :(
         <div className="body">
-            <div className="filter">
-              <div className="search">
-                <input type="text" className="search-box" value={searchText} onChange={(e)=>{
+            <div className="filter flex">
+              <div className="search m-4 p-4">
+                <input type="text" className="border border-solid border-black " value={searchText} onChange={(e)=>{
                   setSearchText(e.target.value);
                 }}>
                  </input>
-                <button
+                <button className="px-3 py-0.5 bg-green-100 m-4 rounded-lg"
                  onClick={()=>{
                    const filteredRestaurant = ListOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                  setFilteredRestaurant(filteredRestaurant);
                 }} 
                 >Search</button>
               </div>
-                <button className="filter-btn" 
+              <div className=" m-4 p-4 flex items-center"> 
+                 <button className="px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 " 
                 onClick={()=>{
                         const filteredList = ListOfRestaurants.filter(
                             (res) => res.info.avgRating>=4
@@ -93,8 +94,9 @@ if(onlineStatus===false)
                         setListOfRestraunt(filteredList); 
                 }}>
                     Top Rated Restaurants</button>
+              </div>
                  </div>
-            <div className="restro-container">
+            <div className="flex flex-wrap">
             { filteredRestaurant.map((restaurant) => (
                 <Link
                  key= {restaurant.info.id} 
