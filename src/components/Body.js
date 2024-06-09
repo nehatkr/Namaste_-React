@@ -1,5 +1,5 @@
 // import restaurantList from "../utils/RestaurantList";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromotedLable} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState,useEffect } from "react";
 import {Link} from "react-router-dom";
@@ -9,8 +9,12 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () =>{
     const [ListOfRestaurants, setListOfRestraunt] = useState([] );
-    const[searchText , setSearchText] = useState("");
     const[filteredRestaurant, setFilteredRestaurant] = useState([]);
+    const[searchText , setSearchText] = useState("");
+
+    const RestaurantCardPromoted = withPromotedLable(RestaurantCard);
+
+    // console.log("Body Rendered",ListOfRestaurants);
 
 let ListOfRestaurantsjs = [
     {
@@ -102,7 +106,8 @@ if(onlineStatus===false)
                  key= {restaurant.info.id} 
                 to = {"restaurants/"+restaurant.info.id}
                 >
-                  <RestaurantCard  resData={restaurant}/></Link>
+                  {/* {restaurant.data.promoted ?(<RestaurantCardPromoted resData={restaurant} />):(<RestaurantCard  resData={restaurant}/>)} */}
+                    <RestaurantCard  resData={restaurant}/></Link>
             ))}
         
             </div>

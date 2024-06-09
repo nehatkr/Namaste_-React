@@ -34,10 +34,12 @@ const resInfo = useRestaurantMenu(resId);
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
+    console.log( resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0]);
+
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
+    <div className="text-center ">
+      <h1 className="font-bold my-10 text-2xl">{name}</h1>
+      <p className="font-bold text-2xl">
         {cuisines.join(" , ")}-{costForTwoMessage}
       </p>
       <h2>Menu</h2>
